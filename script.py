@@ -23,7 +23,10 @@ def conv(path_to_file:str)->None:
             page = doc.loadPage(page_num)
             pix = page.getPixmap()
             filename = filename.split('.')[0]
-            pix_filename = "{}_{}.png".format(filename,page_num)
+            if page_num != 0:
+                pix_filename = "{}_{}.png".format(filename,page_num)
+            else:
+                pix_filename = '{}.png'.format(filename)
             write_path = os.path.join(folder, pix_filename)
             pix_files.append(write_path)
             pix.writeImage(write_path)
